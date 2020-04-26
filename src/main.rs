@@ -64,7 +64,10 @@ fn write_message(url: String, msg: &str, iteration: usize, channel: ChannelId, a
         // m
         m.embed(|e| {
             e.colour(serenity::utils::Colour::TEAL);
-            e.title("Pixiv ".to_owned() + &iteration.to_string() + ":");
+            if iteration != 0 {
+                e.title("Pixiv ".to_owned() + &iteration.to_string() + ":");
+            }
+            else { e.title("Pixiv ".to_owned() + ":"); }
             e.url(url);
             e.image(msg);
             e.footer(|f| {
